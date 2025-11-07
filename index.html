@@ -606,8 +606,13 @@
             const playBtn = container.querySelector('.play-btn i');
             
             if (video.paused) {
+                // Enable sound and controls when user clicks to play
+                video.muted = false;
+                video.controls = true;
                 video.play();
                 playBtn.className = 'fas fa-pause text-primary';
+                // Hide the custom play button since video now has controls
+                container.querySelector('.play-overlay').style.opacity = '0';
             } else {
                 video.pause();
                 playBtn.className = 'fas fa-play text-primary';
