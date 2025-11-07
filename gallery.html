@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - CCC Glory of Latter Days Parish, Edinburgh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: var(--primary-color) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-grid {
+            padding: 4rem 0;
+        }
+        
+        .gallery-item {
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-category {
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: var(--light-bg);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="Updated_Church_Index.html">
+                <i class="fas fa-church me-2"></i>CCC Glory of Latter Days Parish
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Updated_Church_Index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Updated_Church_Index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Updated_Church_Index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sermons.html">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Updated_Church_Index.html#ministries">Ministries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            <p class="lead">Capturing memories of our faith community and church life</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-4">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="btn filter-btn active" data-filter="all">All Photos</button>
+                <button class="btn filter-btn" data-filter="sunday-service">Sunday Services</button>
+                <button class="btn filter-btn" data-filter="events">Church Events</button>
+                <button class="btn filter-btn" data-filter="community">Community</button>
+                <button class="btn filter-btn" data-filter="ministry">Ministry</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <div class="container">
+            <!-- Sunday Service Photos -->
+            <div class="gallery-category" data-category="sunday-service">
+                <h3 class="category-title">Sunday Service Moments</h3>
+                <div class="row">
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img1.jpg" data-lightbox="gallery" data-title="Sunday Worship Service">
+                            <img src="images/sundayservice/img1.jpg" alt="Sunday Service 1" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img2.jpg" data-lightbox="gallery" data-title="Congregation in Prayer">
+                            <img src="images/sundayservice/img2.jpg" alt="Sunday Service 2" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img3.jpg" data-lightbox="gallery" data-title="Praise and Worship">
+                            <img src="images/sundayservice/img3.jpg" alt="Sunday Service 3" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img4.jpg" data-lightbox="gallery" data-title="Fellowship Time">
+                            <img src="images/sundayservice/img4.jpg" alt="Sunday Service 4" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img5.jpg" data-lightbox="gallery" data-title="Reading God's Word">
+                            <img src="images/sundayservice/img5.jpg" alt="Sunday Service 5" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img6.jpg" data-lightbox="gallery" data-title="Community Gathering">
+                            <img src="images/sundayservice/img6.jpg" alt="Sunday Service 6" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img7.jpg" data-lightbox="gallery" data-title="Baptism Service">
+                            <img src="images/sundayservice/img7.jpg" alt="Sunday Service 7" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img8.jpg" alt="Sunday Service 8" data-lightbox="gallery" data-title="Church Choir">
+                            <img src="images/sundayservice/img8.jpg" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img9.jpg" data-lightbox="gallery" data-title="Youth Ministry">
+                            <img src="images/sundayservice/img9.jpg" alt="Sunday Service 9" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img10.jpg" data-lightbox="gallery" data-title="Prayer Circle">
+                            <img src="images/sundayservice/img10.jpg" alt="Sunday Service 10" class="gallery-image">
+                        </a>
+                    </div>
+                    <!-- Add more Sunday service images as needed -->
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img11.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img11.jpg" alt="Sunday Service 11" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img12.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img12.jpg" alt="Sunday Service 12" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img13.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img13.jpg" alt="Sunday Service 13" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img14.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img14.jpg" alt="Sunday Service 14" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img15.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img15.jpg" alt="Sunday Service 15" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img16.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img16.jpg" alt="Sunday Service 16" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img17.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img17.jpg" alt="Sunday Service 17" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img18.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img18.jpg" alt="Sunday Service 18" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img19.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img19.jpg" alt="Sunday Service 19" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img20.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img20.jpg" alt="Sunday Service 20" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img21.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img21.jpg" alt="Sunday Service 21" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img22.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img22.jpg" alt="Sunday Service 22" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img23.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img23.jpg" alt="Sunday Service 23" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img24.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img24.jpg" alt="Sunday Service 24" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img25.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img25.jpg" alt="Sunday Service 25" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img26.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img26.jpg" alt="Sunday Service 26" class="gallery-image">
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item" data-category="sunday-service">
+                        <a href="images/sundayservice/img27.jpg" data-lightbox="gallery" data-title="Sunday Service">
+                            <img src="images/sundayservice/img27.jpg" alt="Sunday Service 27" class="gallery-image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Church Events -->
+            <div class="gallery-category" data-category="events">
+                <h3 class="category-title">Church Events</h3>
+                <div class="row">
+                    <div class="col-md-4 gallery-item" data-category="events">
+                        <a href="images/events/538359275_18016959650767677_2254471270723542986_n.jpg" data-lightbox="gallery" data-title="Christmas Celebration">
+                            <img src="images/events/538359275_18016959650767677_2254471270723542986_n.jpg" alt="Church Event" class="gallery-image">
+                        </a>
+                    </div>
+                    <!-- Add more event images here -->
+                </div>
+            </div>
+
+            <!-- Placeholder for future categories -->
+            <div class="gallery-category" data-category="community">
+                <h3 class="category-title">Community Outreach</h3>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="lead text-muted">More photos coming soon...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-category" data-category="ministry">
+                <h3 class="category-title">Ministry Activities</h3>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="lead text-muted">More photos coming soon...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-church me-2"></i>CCC Glory of Latter Days Parish</h5>
+                    <p>A place where faith, family, and community come together to worship, grow, and serve.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="Updated_Church_Index.html" class="text-white">Home</a></li>
+                        <li><a href="Updated_Church_Index.html#about" class="text-white">About</a></li>
+                        <li><a href="Updated_Church_Index.html#services" class="text-white">Services</a></li>
+                        <li><a href="events.html" class="text-white">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>Ministries</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Children's Ministry</a></li>
+                        <li><a href="#" class="text-white">Youth Ministry</a></li>
+                        <li><a href="#" class="text-white">Women's Ministry</a></li>
+                        <li><a href="#" class="text-white">Men's Ministry</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>Resources</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="sermons.html" class="text-white">Sermon Library</a></li>
+                        <li><a href="#" class="text-white">Bible Study</a></li>
+                        <li><a href="#" class="text-white">Prayer Requests</a></li>
+                        <li><a href="#" class="text-white">Online Giving</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p>&copy; 2025 CCC Glory of Latter Days Parish. All rights reserved.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p>Built with ❤️ for God's glory</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    
+    <script>
+        // Gallery filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const galleryCategories = document.querySelectorAll('.gallery-category');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    if (filter === 'all') {
+                        // Show all items and categories
+                        galleryItems.forEach(item => {
+                            item.style.display = 'block';
+                        });
+                        galleryCategories.forEach(category => {
+                            category.style.display = 'block';
+                        });
+                    } else {
+                        // Hide all categories first
+                        galleryCategories.forEach(category => {
+                            category.style.display = 'none';
+                        });
+                        
+                        // Show only the selected category
+                        const targetCategory = document.querySelector(`[data-category="${filter}"]`);
+                        if (targetCategory) {
+                            targetCategory.style.display = 'block';
+                        }
+                    }
+                });
+            });
+
+            // Configure lightbox
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'albumLabel': 'Image %1 of %2'
+            });
+        });
+    </script>
+</body>
+</html>
